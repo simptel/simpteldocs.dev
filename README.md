@@ -36,7 +36,7 @@ Driving SimpleDocs is a trio of powerful frameworks and libraries:
 ## Roadmap 🚀
 
 - [x] Angular Foundation
-- [x] Markdown Handling with ngx-markdown
+- [x] Markdown Handling
 - [x] Tailwind SCSS Styling
 - [ ] OpenAPI Specification (OAS) Support for JSON/YAML
 - [ ] One-Click Azure Deployment (Coming Soon!)
