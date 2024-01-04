@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './sidemenu.component.html',
-  styleUrl: './sidemenu.component.scss'
 })
 export class SidemenuComponent {
 

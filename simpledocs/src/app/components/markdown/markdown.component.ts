@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './markdown.component.html',
-  styleUrl: './markdown.component.scss'
 })
 export class MarkdownComponent {
 

@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './input-repo.component.html',
-  styleUrl: './input-repo.component.scss'
 })
 export class InputRepoComponent {
 
