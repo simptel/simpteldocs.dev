@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "start:ssr": "npm run build && node dist/simpledocs/server/server.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:simpledocs": "node dist/simpledocs/server/server.mjs",
