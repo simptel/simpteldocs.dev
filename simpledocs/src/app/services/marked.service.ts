@@ -26,7 +26,7 @@ export class MarkedService {
     );
   }
 
-  public getMarkdownFile(url: string): Observable<string> {
+  private getMarkdownFile(url: string): Observable<string> {
 
     return this.http.get(url, { responseType: 'text' }).pipe(
       map((file: string) => {
@@ -38,22 +38,22 @@ export class MarkedService {
     );
   }
 
-  public sanitizeGeneratedHTML(html: string): SafeHtml {
+  private sanitizeGeneratedHTML(html: string): SafeHtml {
     const sanitizedHtml = this.sanitizer.sanitize(1, html);
     if (!sanitizedHtml) throw Error('HTML Is not safe')
     return sanitizedHtml;
   }
 
-  public isMarkdown(content: string): boolean {
+  private isMarkdown(content: string): boolean {
     const markdownPattern = /^[\s\S]*[#*-\d]+[\s\S]*$/;
     return markdownPattern.test(content);
   }
 
-  public isMarkdownFileExtension(url: string): boolean {
+  private isMarkdownFileExtension(url: string): boolean {
     return url.toLowerCase().endsWith('.md');
   }
 
-  public markdownToHTML(markdown: string): string {
+  private markdownToHTML(markdown: string): string {
     try {
       const html = marked(markdown);
       return html
