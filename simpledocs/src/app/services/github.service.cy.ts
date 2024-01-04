@@ -1,7 +1,5 @@
 describe('should test github service', () => {
   it('should test github api', () => {
-    cy.visit('http://localhost:4200/#/getting-started');
-
     cy.request('GET', 'https://api.github.com/repos/simptel/docs.simptel.com/contents/docs').as('docs');
     cy.get('@docs').should((response) => { });
 
