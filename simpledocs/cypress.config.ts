@@ -2,6 +2,7 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   reporter: 'junit',
+  projectId: "dfmazp",
   e2e: {
     'baseUrl': 'http://localhost:4000',
   },
