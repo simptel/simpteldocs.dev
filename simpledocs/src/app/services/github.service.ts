@@ -12,21 +12,21 @@ export class GithubService {
 
   refreshDocs$ = this.notify.asObservable();
   
-  public setDocsRefresh(data: boolean) {
+  public setRefreshDocs(data: boolean) {
     this.notify.next(data);
   }
 
   constructor(private http: HttpClient) { }
 
-  getRepoUrl(){
+  public getRepoUrl() {
     return this.repoUrl.asObservable();
   }
 
-  saveRepoUrl(data:string) {
+  public setRepoUrl(data:string) {
     this.repoUrl.next(data);
   }
 
-  showDocsApi(repoName: string) {
+  public showSimpleDocs(repoName: string) {
     return this.http.get(`https://api.github.com/repos/${repoName}/contents/docs`);
   }
 }
