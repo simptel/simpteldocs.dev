@@ -1,1 +1,7 @@
-<p>markdown works!</p>
+<ng-container>
+  @if (renderedMarkdown$ | async; as markdown) {
+    <article class="prose my-8 text-sm" [innerHTML]="markdown"> </article>
+  } @else {
+    <article> The document can't be loaded </article>
+  }
+</ng-container>
