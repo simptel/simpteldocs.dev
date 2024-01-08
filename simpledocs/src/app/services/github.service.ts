@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject, shareReplay } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,6 @@ export class GithubService {
       endpoint = endpoint + `/${directoryName}`;
     if (subDirectoryName) 
       endpoint = endpoint + `/${directoryName}/${subDirectoryName}`;
-    return this.http.get(endpoint).pipe(shareReplay());
+    return this.http.get(endpoint);
   }
 }
