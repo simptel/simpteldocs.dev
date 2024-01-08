@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +8,18 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class GithubService {
 
   private repoUrl: Subject<string> = new BehaviorSubject<string>('simptel/docs.simptel.com');
-  public notify = new BehaviorSubject<boolean>(false);
+  private notify = new BehaviorSubject<boolean>(false);
+  private docsData = new BehaviorSubject<object>({});
 
-  refreshDocs$ = this.notify.asObservable();
+  public refreshDocs$ = this.notify.asObservable();
+  public getDocsData$ = this.docsData.asObservable();
   
   public setRefreshDocs(data: boolean) {
     this.notify.next(data);
+  }
+
+  public setDocsData(data: object) {
+    this.docsData.next(data);
   }
 
   constructor(private http: HttpClient) { }
@@ -26,7 +32,12 @@ export class GithubService {
     this.repoUrl.next(data);
   }
 
-  public showSimpleDocs(repoName: string) {
-    return this.http.get(`https://api.github.com/repos/${repoName}/contents/docs`);
+  public showSimpleDocs(repoName: string, directoryName?: string, subDirectoryName?: string) {
+    let endpoint = `https://api.github.com/repos/${repoName}/contents/docs`;
+    if (directoryName) 
+      endpoint = endpoint + `/${directoryName}`;
+    if (subDirectoryName) 
+      endpoint = endpoint + `/${directoryName}/${subDirectoryName}`;
+    return this.http.get(endpoint).pipe(shareReplay());
   }
 }
