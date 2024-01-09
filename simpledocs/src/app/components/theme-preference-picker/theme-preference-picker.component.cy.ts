@@ -18,12 +18,15 @@ describe('ThemePreferencePickerComponent component tests', () => {
   });
 
   it('should test dark mode', () => {
-    if (matchMedia?.('(prefers-color-scheme: dark)').matches) {
+    const preference = localStorage.getItem('colorSchemePreference');
+    if (preference == 'system') {
+      cy.get('app-flash-auto-svg').should('be.visible');
+    } else if (preference == 'light') {
+      cy.get('html').should('not.have.class', 'dark');
+      cy.get('app-sun-svg').should('be.visible');
+    } else if (preference == 'dark') {
       cy.get('html').should('have.class', 'dark');
       cy.get('app-moon-svg').should('be.visible');
-    } else {
-      cy.get('html').should('not.have.class', 'dark');
-      cy.get('app-flash-auto-svg').should('be.visible');
     }
   });
 })
