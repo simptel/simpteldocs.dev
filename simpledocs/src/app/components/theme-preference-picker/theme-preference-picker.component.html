@@ -1,0 +1,30 @@
+<button class="flex rounded-md p-2 focus:bg-neutral-100" cdkMenuItem [cdkMenuTriggerFor]="menu" type="button" role="button" aria-label="theme">
+  @if (this.colorSchemePreference==='dark') {
+    <app-moon-svg class="h-5 w-5"></app-moon-svg>
+  } @else if (this.colorSchemePreference==='light') {
+    <app-sun-svg class="h-5 w-5"></app-sun-svg>
+  } @else {
+    <app-flash-auto-svg class="h-5 w-5"></app-flash-auto-svg>
+  }
+</button>
+
+<ng-template #menu>
+  <div cdkMenu class="flex flex-col gap-6 rounded-md border border-neutral-200 bg-neutral-100 shadow-md">
+
+    <button class="flex flex-col items-center p-2" cdkMenuItemCheckbox (click)="switchColorScheme('dark')">
+      <app-moon-svg class="h-5 w-5"></app-moon-svg>
+      <span class="text-xs">Dark</span>
+    </button>
+
+    <button class="flex flex-col items-center p-2" cdkMenuItemCheckbox (click)="switchColorScheme('light')">
+      <app-sun-svg class="h-5 w-5"></app-sun-svg>
+      <span class="text-xs">Light</span>
+    </button>
+
+    <button class="flex flex-col items-center p-2" cdkMenuItemCheckbox (click)="switchColorScheme('system')">
+      <app-flash-auto-svg class="block h-5 w-5"></app-flash-auto-svg>
+      <span class="text-xs">System</span>
+    </button>
+
+  </div>
+</ng-template>
