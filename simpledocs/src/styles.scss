@@ -2,3 +2,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-white text-black;
+}
+
+@layer utilities {
+  .dark {
+    .bg-white {
+      background-color: #171717;
+    }
+    .bg-neutral-100 {
+      background-color: #404040;
+    }
+    .text-black {
+      color: #fff;
+    }
+    .border-neutral-200 {
+      border-color: #525252;
+    }
+  }
+}
