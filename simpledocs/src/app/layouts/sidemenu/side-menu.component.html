@@ -1,1 +1,56 @@
-<p>sidemenu works!</p>
+<div class="p-5 flex">
+  <button class="p-2 rounded-md bg-neutral-100 w-10 h-10" cdkOverlayOrigin #trigger="cdkOverlayOrigin"
+    (click)="toggleSideMenu()">
+    <app-burger-menu-svg></app-burger-menu-svg>
+  </button>
+  <h1 class="text-lg p-1 ml-3 w-36"> SimpleDocs </h1>
+  <app-theme-preference-picker></app-theme-preference-picker>
+</div>
+
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" hasBackdrop
+  [cdkConnectedOverlayOpen]="isSideMenuOpen" (backdropClick)="isSideMenuOpen = false">
+  <div class="w-fit min-w-72 h-screen bg-neutral-100" [@childAnimation]>
+    <p class="p-5"> {{ docsName }} </p>
+    <div class="flex flex-col ml-5 border-neutral-500 border-l-2 h-fit">
+      @for (menu of sideMenusList; track menu) {
+      <button class="flex ml-3 text-left p-3" cdkOverlayOrigin #trigger="cdkOverlayOrigin"
+        (click)="toggleSubMenu(); openSubMenu(menu)">
+        <div class="border-red-500 border-l-4 -ml-6 h-fit w-full"> 
+          <p class="w-4/5 ml-5"> {{ menu.name }} </p> 
+        </div>
+        @if (menu.type === 'directory') {
+        <div class="h-6 w-6 p-1">
+          <app-chevron-right-svg></app-chevron-right-svg>
+        </div>
+        }
+      </button>
+      }
+    </div>
+  </div>
+</ng-template>
+
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" hasBackdrop
+  [cdkConnectedOverlayOpen]="isSubMenuOpen" (backdropClick)="isSubMenuOpen = false">
+  <div class="w-fit min-w-72 h-screen bg-neutral-100" [@childAnimation]>
+    <div class="flex p-5">
+      <button (click)="toggleSubMenu()" class="w-7 h-7 mr-3">
+        <app-back-svg></app-back-svg>
+      </button>
+      <p class="mt-1"> {{ directoryName }} </p>
+    </div>
+    <div class="flex flex-col ml-5 border-neutral-500 border-l-2 h-fit">
+      @for (menu of subMenusList; track menu) {
+      <button class="flex ml-3 text-left p-3" cdkOverlayOrigin #trigger="cdkOverlayOrigin" (click)="openSubMenu(menu)">
+        <div class="border-red-500 border-l-4 -ml-6 h-fit w-full"> 
+          <p class="w-4/5 ml-5"> {{ menu.name }} </p> 
+        </div>
+        @if (menu.type === 'directory') {
+        <div class="h-6 w-6 p-1">
+          <app-chevron-right-svg></app-chevron-right-svg>
+        </div>
+        }
+      </button>
+      }
+    </div>
+  </div>
+</ng-template>
