@@ -9,7 +9,7 @@
 
 <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" hasBackdrop
   [cdkConnectedOverlayOpen]="isSideMenuOpen" (backdropClick)="isSideMenuOpen = false">
-  <div class="w-fit min-w-72 h-screen bg-neutral-100" [@childAnimation]>
+  <div class="w-fit min-w-72 h-screen bg-neutral-100 absolute -left-5" [@childAnimation]>
     <p class="p-5"> {{ docsName }} </p>
     <div class="flex flex-col ml-5 border-neutral-500 border-l-2 h-fit">
       @for (menu of sideMenusList; track menu) {
@@ -31,7 +31,7 @@
 
 <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" hasBackdrop
   [cdkConnectedOverlayOpen]="isSubMenuOpen" (backdropClick)="isSubMenuOpen = false">
-  <div class="w-fit min-w-72 h-screen bg-neutral-100" [@childAnimation]>
+  <div class="w-fit min-w-72 h-screen bg-neutral-100 absolute -left-5" [@childAnimation]>
     <div class="flex p-5">
       <button (click)="toggleSubMenu()" class="w-7 h-7 mr-3">
         <app-back-svg></app-back-svg>
