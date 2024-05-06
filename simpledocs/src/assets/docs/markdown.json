@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Getting Started",
+        "type": "directory",
+        "data": [{
+            "name": "pre-requisits.md",
+            "type": "file"
+        }]
+    },
+    {
+        "name": "Introduction",
+        "type": "directory",
+        "data": [
+            {
+                "name": "Overview",
+                "type": "directory",
+                "data": [
+                    {
+                        "name": "overview.md",
+                        "type": "file"
+                    }
+                ]
+            },
+            {
+                "name": "Glossary",
+                "type": "directory",
+                "data": [
+                    {
+                        "name": "glossary.md",
+                        "type": "file"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Authorization",
+        "type": "directory",
+        "data": [{
+            "name": "overview.md",
+            "type": "file"
+        }]
+    }, 
+    {
+        "name": "Authentication",
+        "type": "directory",
+        "data": [{
+            "name": "overview.md",
+            "type": "file"
+        }]
+    },
+    {
+        "name": "Access",
+        "type": "directory",
+        "data": [{
+            "name": "overview.md",
+            "type": "file"
+        }]
+    }
+]
